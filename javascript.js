@@ -1,11 +1,20 @@
 const hands = ['Rock', 'Papers', 'Scisors']
+const choices = ["1", "2", "3", "Exit"]
 
+let playerSelectionPrompt // = undefined
+let playerSelection // = undefined
 
+let computerSelection // = undefined
+
+let round = 1
+
+// Get random hand choice (Computer)
 function getComputerChoice() {
     let randHands = hands[Math.floor(Math.random() * hands.length)]
     return randHands
 }
 
+// Get hand from the player's input
 function getPalyerSelection(nb) {
     if (nb == 1) {
         return "Rock"
@@ -19,6 +28,7 @@ function getPalyerSelection(nb) {
     }
 }
 
+// Determines the winner
 function playRound(playerSelection, computerSelection) {
     if ((playerSelection === "Rock" && computerSelection == "Rock") || (playerSelection === "Papers" && computerSelection == "Papers") || (playerSelection === "Scisors" && computerSelection == "Scisors")) {
         return ("Draw ! "  + playerSelection + " equals " + computerSelection)
@@ -32,35 +42,40 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-let playerSelectionPrompt // = undefined
-let playerSelection // = undefined
+// Main
+function game(playerInputPrompt) {
 
-let computerSelection // = undefined
+    // Verifies that player submitted the right typo
+    while (!choices.includes(playerInputPrompt)) {
+        alert("Wrong input ! You must submit a number between 1 and 3, or Exit !")
+        playerInputPrompt = prompt("Round " + round + "\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
+    }
+    // Run the game while the player's input != Exit
+    while (playerInputPrompt != "Exit") {
 
-const choices = ["1", "2", "3", "Exit"]
+        playerSelection = getPalyerSelection(playerInputPrompt)
+        computerSelection = getComputerChoice()
 
-playerSelectionPrompt = prompt("Please submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit")
+        alert("The computer played " + computerSelection)
+        alert(playRound(playerSelection, computerSelection))
 
-while (playerSelectionPrompt != "Exit") {
+        // Restart
+        round++
+        playerInputPrompt = prompt("Round " + round + "\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
+        while (!choices.includes(playerInputPrompt)) {
+            alert("Wrong input ! You must submit a number between 1 and 3, or Exit !")
+            playerInputPrompt = prompt("Round " + round + "\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
+        }
 
-    while (!choices.includes(playerSelectionPrompt)) {
-        alert("Wrong input ! You must submit a number between 1 and 3 !")
-        playerSelectionPrompt = prompt("Please submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit")
     }
 
-    playerSelection = getPalyerSelection(playerSelectionPrompt)
-    computerSelection = getComputerChoice()
+    alert("Bye bye !")
+
+}
 
 
-    alert("The computer played " + computerSelection)
-    alert(playRound(playerSelection, computerSelection))
+game(prompt("\nRound " + round + "\n\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n"))
 
-    playerSelectionPrompt = prompt("Please submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit")
-    
-} 
-
-
-alert("Bye Bye !")
 
 
 
