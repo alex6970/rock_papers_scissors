@@ -48,7 +48,7 @@ function game(playerInputPrompt) {
     // Verifies that player submitted the right typo
     while (!choices.includes(playerInputPrompt)) {
         alert("Wrong input ! You must submit a number between 1 and 3, or Exit !")
-        playerInputPrompt = prompt("Round " + round + "\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
+        playerInputPrompt = prompt("\nRound " + round + "\n\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
     }
     // Run the game while the player's input != Exit
     while (playerInputPrompt != "Exit") {
@@ -61,10 +61,10 @@ function game(playerInputPrompt) {
 
         // Restart
         round++
-        playerInputPrompt = prompt("Round " + round + "\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
+        playerInputPrompt = prompt("\nRound " + round + "\n\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
         while (!choices.includes(playerInputPrompt)) {
             alert("Wrong input ! You must submit a number between 1 and 3, or Exit !")
-            playerInputPrompt = prompt("Round " + round + "\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
+            playerInputPrompt = prompt("\nRound " + round + "\n\nPlease submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit \n")
         }
 
     }
