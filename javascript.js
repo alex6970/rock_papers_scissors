@@ -27,7 +27,7 @@ function playRound(playerSelection, computerSelection) {
         return ("You win ! " + playerSelection + " beats " + computerSelection)
 
     } else {
-        return ("You lost :(, " + computerSelection + " beats " + playerSelection)
+        return ("You lost ! " + computerSelection + " beats " + playerSelection)
     }
 }
 
@@ -39,25 +39,26 @@ let computerSelection // = undefined
 
 const choices = ["1", "2", "3", "Exit"]
 
-
+playerSelectionPrompt = prompt("Please submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit")
 
 while (playerSelectionPrompt != "Exit") {
-    
-    playerSelectionPrompt = prompt("Please submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit")
 
-    while (!playerSelectionPrompt ) {
-        alert("Wrong input ! You must submit a number between 1 and 3 !!")
-        playerSelectionPrompt = prompt("Please submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors")
+    while (!choices.includes(playerSelectionPrompt)) {
+        alert("Wrong input ! You must submit a number between 1 and 3 !")
+        playerSelectionPrompt = prompt("Please submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit")
     }
 
     playerSelection = getPalyerSelection(playerSelectionPrompt)
     computerSelection = getComputerChoice()
 
 
-    alert("Computer's choice was : ", computerSelection)
+    alert("The computer played " + computerSelection)
     alert(playRound(playerSelection, computerSelection))
 
-}
+    playerSelectionPrompt = prompt("Please submit your choice : \n 1 : Rock \n 2 : Papers \n 3 : Scisors \n\n Submit Exit to quit")
+    
+} 
+
 
 alert("Bye Bye !")
 
